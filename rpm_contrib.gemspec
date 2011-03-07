@@ -36,6 +36,7 @@ the New Relic Ruby monitoring gem newrelic_rpm.
      "lib/rpm_contrib/instrumentation/paperclip.rb",
      "lib/rpm_contrib/instrumentation/redis.rb",
      "lib/rpm_contrib/instrumentation/resque.rb",
+     "lib/rpm_contrib/instrumentation/typhoeus.rb",
      "test/helper.rb",
      "test/schema.rb",
      "test/test_mongoid.rb",
@@ -66,4 +67,3 @@ the New Relic Ruby monitoring gem newrelic_rpm.
     s.add_dependency(%q<newrelic_rpm>, [">= 2.13.1"])
   end
 end
-
