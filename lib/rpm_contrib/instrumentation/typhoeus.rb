@@ -1,6 +1,7 @@
-if defined? Typhoeus
+if defined?(Typhoeus) and not NewRelic::Control.instance['disable_typhoeus']
   require 'uri'
   module Typhoeus
+
     Request.instance_eval do
       def get_with_newrelic_trace(*args, &block)
         uri = URI.parse(args.first)
@@ -17,5 +18,10 @@ if defined? Typhoeus
       alias get_without_newrelic_trace get
       alias get get_with_newrelic_trace
     end
+
+    Hydra.class_eval do
+      add_method_tracer :run, 'External/Typhoeus::Hydra/run'
+    end
+
   end
-end  
+end
