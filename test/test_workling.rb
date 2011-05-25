@@ -1,24 +1,16 @@
 require "#{File.dirname(__FILE__)}/helper"
 begin
-  require 'mongoid'
+  require 'redis'
+  require 'ruby-debug'
 rescue LoadError
 end
 
-require "#{File.dirname(__FILE__)}/../lib/rpm_contrib/instrumentation/mongoid"
+require "#{File.dirname(__FILE__)}/../lib/rpm_contrib/instrumentation/workling"
 
-if defined?(::Mongoid)
-  
-  Mongoid.configure do |config|
-    config.master = Mongo::Connection.new.db('animals')
-  end
+if defined?(::Workling)
 
-  class Dog
-    include Mongoid::Document
 
-    field :name
-  end
-
-  class MongoidTest < Test::Unit::TestCase
+  class WorklingTest < Test::Unit::TestCase
 
     # Called before every test method runs. Can be used
     # to set up fixture information.
@@ -35,7 +27,7 @@ if defined?(::Mongoid)
 
     # Fake test
     def test_fail
-      Dog.create!(:name=>'rover')
+
 
     end
   end

@@ -16,14 +16,10 @@ module RPMContrib
   end
 
 end
-
 # Perform any framework/dispatcher detection before loading the rpm gem.
-raise "The rpm_contrib gem must be loaded before the newrelic_rpm gem." if defined?(::NewRelic)
-
-Dir.glob(RPM_CONTRIB_LIB + "/rpm_contrib/detection/**/*.rb") { |file| require file }
-
+require 'rpm_contrib/detection'
+puts "Warning! The rpm_contrib gem should be loaded before the newrelic_rpm gem if you are using Resque or Camping." if defined?(::NewRelic) && defined?(::NewRelic::Control)
 require 'newrelic_rpm'
-
 if defined? Rails
   # Rails 3.x+
   if Rails.respond_to?(:version) && Rails.version =~ /^3/

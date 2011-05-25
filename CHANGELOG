@@ -1,3 +1,30 @@
+* Version 2.1.1
+  
+  Fix namespacing problem with Resque
+  Add instrumentation to Mongo::Cursor #refresh and #close - thanks to Chris Griego
+
+* Version 2.1.0
+
+  Included instrumentation from the community:
+  - Alexey Palazhchenko - mongo ORM-agnostic instrumentation
+  - Michael Breen - Elastic Search
+  - Paul Ingles - Sinatra Template instrumentation
+  - Siddharth Dawara - Typhoeus instrumentation
+  - Rob Meyer - ActiveMQ instrumentation
+  - Greg Hazel - Curb instrumentation
+  - Ben Poweski - Crack and Yajl instrumentation
+  - Chad Ingram and Scott Fleckenstein - Workling instrumentation
+  - Adam Weller - UltraSphinx instrumentation
+  - Liron Yahdav - work on the Resque instrumentation
+
+* Version 2.0.1
+
+  Fixed an error with Bundler and RubyGems 1.8.2 which caused the gem to always fail to load
+
+* Version 2.0.0
+
+  Updated to use the latest version of the Ruby Agent
+
 * Version 1.0.13
 
   Removed use of 'metaclass' - no longer available from ActiveSupport as of Rails 3
